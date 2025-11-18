@@ -9,7 +9,6 @@ Don't just memoize everything. Consider the performance costs and trade-offs of 
 Sometimes the issue isn't React, it's that you aren't making good decisions
 
 ### Anonymous Functions and Rendering Cycles
-- React reads top-down
 - Don't put your hooks in conditionals, React will yell at you
 - Wrapping event handlers in an anonymous function will make sure JS doesn't execute slow code paths or create 1000x executions killing us slowly in our sleep
 - Primitives are NOT subject to this
@@ -20,3 +19,6 @@ Sometimes the issue isn't React, it's that you aren't making good decisions
 - React keeps the history of your hooks
 - Don't use dumb shit like `math.random()` or array indices or anything else that's going to change
 
+### Re-Renders
+- Push stuff down the tree. Lift it as high as you need to, and as low as you can get away with to limit the blast radius of component updates.
+- Children Prop: Slot where parent can render content and skip re-rending intermediate components.
